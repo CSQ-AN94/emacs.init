@@ -1,0 +1,37 @@
+;; 这一行代码，将函数 open-init-file 绑定到 <f2> 键上
+(global-set-key (kbd "<f2>") 'open-init-file)
+
+(global-set-key (kbd "C-/") #'undo-only)
+(global-set-key (kbd "C-?") #'undo-redo)
+
+;; 1) 启用 CUA（含 Ctrl+C/X/V/Z、Shift 选区、C-RET 矩形）
+(cua-mode 1)
+
+(global-set-key (kbd "M-[") #'scroll-down-command)
+(global-set-key (kbd "M-]") #'scroll-up-command)
+
+(global-set-key (kbd "C-h C-f") 'find-function)
+(global-set-key (kbd "C-h C-v") 'find-variable)
+(global-set-key (kbd "C-h C-k") 'find-function-on-key)
+
+(global-set-key (kbd "<f5>") 'quickrun)
+
+(global-set-key (kbd "C-;") 'embark-act)
+
+(global-set-key (kbd "C-s") 'consult-line)
+
+;; company mode 默认选择上一条和下一条候选项命令 M-n M-p
+(define-key company-active-map (kbd "C-n") 'company-select-next)
+(define-key company-active-map (kbd "C-p") 'company-select-previous)
+
+(global-set-key (kbd "C-x b") 'consult-buffer)
+
+;; 这个快捷键绑定可以用之后的插件 counsel 代替
+(global-set-key (kbd "C-x C-r") 'recentf-open-files)
+
+(define-key minibuffer-local-map (kbd "C-c C-e") #'embark-export-write)
+
+(global-set-key (kbd "C-c p f") 'project-find-file)
+(global-set-key (kbd "C-c p s") 'consult-ripgrep)
+
+(provide 'init-keybindings)
