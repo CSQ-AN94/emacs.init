@@ -1,8 +1,12 @@
 ;;; -*- coding: utf-8; mode: lisp-data -*-
-(("f:/PPE/home-archive (2) (2)/learn2prog/07_retirement/retirement.c"
+(("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/init.el" . 458)
+ ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/elpa/atom-one-dark-theme-20210128.1640/atom-one-dark-theme.el"
+  . 3954)
+ ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/elpa/doom-themes-20250614.958/doom-material-dark-theme.el"
+  . 3405)
+ ("f:/PPE/home-archive (2) (2)/learn2prog/07_retirement/retirement.c"
   . 87)
  ("f:/Markdown/" (dired-filename . "f:/Markdown/CCT008"))
- ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/init.el" . 395)
  ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-ui.el" . 1096)
  ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-basic.el"
   . 2330)
