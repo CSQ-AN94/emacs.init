@@ -8,4 +8,6 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
+(package-install 'use-package)
+
 (provide 'init-packages)

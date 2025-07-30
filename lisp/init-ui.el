@@ -61,7 +61,10 @@
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 
-(keycast-mode-line-mode 1)
-
+(keycast-mode-line-mode 0)
+(setq keycast-mode-line-format "%2s %s") ; key + command 中间空格
+(custom-set-faces
+ '(keycast-key ((t (:inherit mode-line :weight bold))))
+ '(keycast-command ((t (:inherit mode-line)))))
 
 (provide 'init-ui)

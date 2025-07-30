@@ -4,6 +4,9 @@
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
+(setq custom-file (expand-file-name "lisp/custom.el" user-emacs-directory))
+(load custom-file 'no-error 'no-message)
+
 (require 'init-basic)
 (require 'init-packages)
 (require 'init-tools)
@@ -17,8 +20,5 @@
 
 (require 'init-style)
 (require 'custom)
-
-(setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
-(load custom-file 'no-error 'no-message)
 
 
