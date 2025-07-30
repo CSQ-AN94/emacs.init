@@ -4,8 +4,8 @@
   (find-file "~/.emacs.d/init.el"))
 
 
-(package-install 'embark-consult)
-(package-install 'wgrep)
+(use-package embark-consult)
+(use-package wgrep)
 (defun embark-export-write ()
   "Export the current vertico results to a writable buffer if possible.
 Supports exporting consult-grep to wgrep, file to wdired, and consult-location to occur-edit"

@@ -5,20 +5,20 @@
 
 (setq tab-always-indent 'complete)
 
-(package-install 'vertico)
+(use-package vertico)
 (vertico-mode t)
 
-(package-install 'orderless)
+(use-package orderless)
 (setq completion-styles '(orderless))
 
-(package-install 'marginalia)
+(use-package marginalia)
 (marginalia-mode t)
 
-(package-install 'embark)
+(use-package embark)
 
 (setq prefix-help-command 'embark-prefix-help-command)
 
-(package-install 'consult)
+(use-package consult)
 
 (use-package embark-consult
   :after (embark consult)   ;; 两个都加载后再启用集成功能

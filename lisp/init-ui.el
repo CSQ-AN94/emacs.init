@@ -6,8 +6,7 @@
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; 光标 & 主题 & 字体
-(add-to-list 'default-frame-alist '(cursor-type . (bar . 2)))
-(set-cursor-color "#AEAFAD") 
+(add-to-list 'default-frame-alist '(cursor-type . (bar . 3)))
 
 (use-package atom-one-dark-theme
   :ensure t
@@ -44,27 +43,36 @@
 (require 'awesome-tab)
 ;;(awesome-tab-mode t)
 
-;;icons
-(use-package all-the-icons
-  :ensure t)
-
-(use-package all-the-icons-nerd-fonts
-  :after all-the-icons
-  :ensure t
-  :config
-  (all-the-icons-nerd-fonts-prefer))
-
-(use-package nerd-icons
-  :ensure t)
-
 (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 
-(keycast-mode-line-mode 0)
-(setq keycast-mode-line-format "%2s %s") ; key + command 中间空格
-(custom-set-faces
- '(keycast-key ((t (:inherit mode-line :weight bold))))
- '(keycast-command ((t (:inherit mode-line)))))
+;;(keycast-mode-line-mode 0)
+;;(setq keycast-mode-line-format "%2s %s") ; key + command 中间空格
+;;(custom-set-faces
+;; '(keycast-key ((t (:inherit mode-line :weight bold))))
+;; '(keycast-command ((t (:inherit mode-line)))))
+
+(use-package keycast
+  :ensure t)
+(add-to-list 'global-mode-string '("" keycast-mode-line))
+(keycast-mode-line-mode t)
+
+
+;; nerd-icons
+(use-package nerd-icons
+  :ensure t)
+
+(use-package doom-modeline
+  :ensure t
+  :init
+  (doom-modeline-mode t))
+
+(use-package simple
+  :ensure nil
+  :hook (after-init . size-indication-mode)
+  :init
+  (progn
+    (setq column-number-mode t)))
 
 (provide 'init-ui)

@@ -13,12 +13,11 @@
 (require 'init-completion)
 (require 'init-func)
 
-(require 'init-better-defaults)
-
 (require 'init-keybindings)
 (require 'init-ui)
 
+(require 'init-org)
+
 (require 'init-style)
 (require 'custom)
-
 

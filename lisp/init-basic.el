@@ -1,5 +1,23 @@
+(when (eq system-type 'windows-nt)
+  (add-hook 'emacs-startup-hook
+    (lambda ()
+      ;; 调用外部命令，切系统输入法到 US 英文 (00000409)
+      (call-process "rundll32.exe" nil 0 nil
+                    "user32.dll,LoadKeyboardLayout" "00000409" "1"))))
+
+
+
 (setq wgrep-auto-save-buffer t)
 (setq make-backup-files nil)
+
+(server-mode 1)
+(require 'server)
+(unless (server-running-p)
+  (server-start))
+
+(require 'recentf)
+(recentf-mode 1)
+(setq recentf-max-menu-item 10)
 
 (setq ring-bell-function 'ignore
       visible-bell nil)
@@ -32,5 +50,41 @@
   ;; (dolist (dir '("~/emax/" "~/emax/bin/" "~/emax/bin64/" "~/emax/lisp/" "~/emax/elpa/"))
   ;;   (add-to-list 'load-path dir))
   )
+
+(set-language-environment "UTF-8")
+(prefer-coding-system 'utf-8)
+(when (fboundp 'set-charset-priority)
+  (set-charset-priority 'unicode))
+
+
+(use-package savehist
+  :ensure nil
+  :hook (after-init . savehist-mode)
+  :init (setq enable-recursive-minibuffers t ; Allow commands in minibuffers
+              history-length 1000
+              savehist-additional-variables '(mark-ring
+                                              global-mark-ring
+                                              search-ring
+                                              regexp-search-ring
+                                              extended-command-history)
+              savehist-autosave-interval 300)
+  )
+
+
+
+
+(use-package saveplace
+  :ensure nil
+  :hook (after-init . save-place-mode))
+
+(use-package simple
+  :ensure nil
+  :hook (after-init . size-indication-mode)
+  :init
+  (progn
+    (setq column-number-mode t)
+    ))
+
+
 
 (provide 'init-basic)
