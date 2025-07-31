@@ -70,9 +70,6 @@
               savehist-autosave-interval 300)
   )
 
-
-
-
 (use-package saveplace
   :ensure nil
   :hook (after-init . save-place-mode))
@@ -84,7 +81,5 @@
   (progn
     (setq column-number-mode t)
     ))
-
-
 
 (provide 'init-basic)

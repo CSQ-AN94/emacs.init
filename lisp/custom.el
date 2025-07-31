@@ -6,7 +6,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    '(all-the-icons-nerd-fonts atom-one-dark-theme centaur-tabs
-                              clang-format company doom-modeline
+                              clang-format company corfu doom-modeline
                               doom-themes embark-consult
                               github-dark-vscode-theme
                               highlight-indent-guides indent-guide

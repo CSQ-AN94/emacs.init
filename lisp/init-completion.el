@@ -1,7 +1,22 @@
 ;; 开启全局 Company 补全
-(global-company-mode 1)
-(setq company-minimum-prefix-length 1)
-(setq company-idle-delay 0)
+;; (global-company-mode 1)
+;; (setq company-minimum-prefix-length 1)
+;; (setq company-idle-delay 0)
+(use-package corfu
+  :init
+  (progn
+    (setq corfu-auto t)
+    (setq corfu-cycle t)
+    (setq corfu-quit-at-boundary t)
+    (setq corfu-quit-no-match t)
+    (setq corfu-preview-current nil)
+    (setq corfu-min-width 80)
+    (setq corfu-max-width 100)
+    (setq corfu-auto-delay 0.2)
+    (setq corfu-auto-prefix 1)
+    (setq corfu-on-exact-match nil)
+    (global-corfu-mode)
+    ))
 
 (setq tab-always-indent 'complete)
 

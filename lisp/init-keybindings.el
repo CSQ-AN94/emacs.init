@@ -21,9 +21,9 @@
 
 (global-set-key (kbd "C-s") 'consult-line)
 
-;; company mode 默认选择上一条和下一条候选项命令 M-n M-p
-(define-key company-active-map (kbd "C-n") 'company-select-next)
-(define-key company-active-map (kbd "C-p") 'company-select-previous)
+;; ;; company mode 默认选择上一条和下一条候选项命令 M-n M-p
+;; (define-key company-active-map (kbd "C-n") 'company-select-next)
+;; (define-key company-active-map (kbd "C-p") 'company-select-previous)
 
 (global-set-key (kbd "C-x b") 'consult-buffer)
 
