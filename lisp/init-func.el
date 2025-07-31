@@ -90,14 +90,28 @@ Other buffer group by `awesome-tab-get-group-name' with project name."
         (error nil)))
     out))
 
-(defun my/org--scan-all ()
-  "扫描 E:/F:/G:/ 下所有 .org 文件（已排除系统目录）。"
+(defun my/org--scan-all-elisp ()
+  "原始 Elisp 版：扫描 E:/F:/G:/ 下所有 .org 文件（已排除系统目录）。"
   (delete-dups
    (apply #'append
           (mapcar (lambda (root)
                     (when (file-directory-p root)
                       (my/org--safe-collect root)))
                   my/org-agenda-roots))))
+
+(defun my/org--scan-all ()
+  "快速扫描 .org：优先用外部 rg/fd，没装时回落到纯 Elisp 实现。"
+  (let ((roots my/org-agenda-roots))
+    (cond
+     ((executable-find "rg")
+      ;; rg --files -g '*.org' ROOT1 ROOT2 ...
+      (apply #'process-lines "rg" "--files" "-g" "*.org" roots))
+     ((executable-find "fd")
+      ;; fd --type f --extension org ROOT1 ROOT2 ...
+      (apply #'process-lines "fd" "--type" "f" "--extension" "org" roots))
+     (t
+      ;; 回落到原来的 Elisp 版本
+      (my/org--scan-all-elisp)))))
 
 
 

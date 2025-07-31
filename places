@@ -1,8 +1,8 @@
 ;;; -*- coding: utf-8; mode: lisp-data -*-
-(("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-func.el"
-  . 2380)
- ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-org.el" . 956)
- ("e:/Org/TODO.org" . 368) ("f:/ORG-mode/test.org" . 454)
+(("e:/Org/TODO.org" . 545) ("f:/ORG-mode/test.org" . 344)
+ ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-func.el"
+  . 4131)
+ ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-org.el" . 923)
  ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-packages.el"
   . 285)
  ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/init.el" . 458)
