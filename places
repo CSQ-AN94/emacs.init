@@ -1,14 +1,15 @@
 ;;; -*- coding: utf-8; mode: lisp-data -*-
-(("f:/PPE/home-archive/learn2prog/08_testing/README" . 1082)
- ("f:/PPE/home-archive/learn2prog/07_retirement/retirement.c" . 1645)
+(("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-ui.el" . 2063)
+ ("f:/PPE/home-archive/learn2prog/07_retirement/retirement.c" . 1643)
  ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/init.el" . 348)
+ ("f:/PPE/home-archive/learn2prog/09_testing2/README" . 279)
+ ("f:/PPE/home-archive/learn2prog/08_testing/README" . 1082)
  ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-completion.el"
   . 501)
  ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-keybindings.el"
   . 613)
  ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-basic.el"
   . 2326)
- ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-ui.el" . 746)
  ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/elpa/cfrs-20220129.1149/cfrs.el"
   . 2256)
  ("f:/PPE/home-archive/learn2prog/08_testing/isPrime-broken1" . 1360)

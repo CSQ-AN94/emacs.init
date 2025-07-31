@@ -10,9 +10,9 @@
                               doom-themes embark-consult
                               github-dark-vscode-theme
                               highlight-indent-guides indent-guide
-                              keycast marginalia markdown-mode
-                              orderless org org-bullets org-contrib
-                              quickrun rainbow-delimiters
+                              keycast kind-icon marginalia
+                              markdown-mode orderless org org-bullets
+                              org-contrib quickrun rainbow-delimiters
                               rainbow-identifiers restart-emacs
                               treemacs-nerd-icons treemacs-projectile
                               vertico vscode-dark-plus-theme wgrep)))

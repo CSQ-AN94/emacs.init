@@ -40,7 +40,7 @@
   :config
   ;; 外观
   (setq centaur-tabs-style "bar"
-        centaur-tabs-height 40
+        centaur-tabs-height 50
         centaur-tabs-set-icons t 
         centaur-tabs-icon-type 'nerd-icons
         centaur-tabs-plain-icons t
@@ -121,6 +121,24 @@ Other buffer group by `centaur-tabs-get-group-name' with project name."
 ;; nerd-icons
 (use-package nerd-icons
   :ensure t)
+
+;; icon
+(use-package kind-icon
+  :after corfu
+  :custom
+  (kind-icon-default-face 'corfu-default)  ; 图标背景对齐 Corfu
+  :config
+  (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+
+;;corfu buffer ui
+(setq image-scaling-factor 0.7)
+(add-hook 'corfu-mode-hook
+  (lambda ()
+    (when (boundp 'default-text-properties)
+      (setq-local default-text-properties nil))
+    (setq-local line-spacing 0)))
+
+
 
 (use-package doom-modeline
   :ensure t
