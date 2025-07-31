@@ -1,18 +1,26 @@
 ;;; -*- coding: utf-8; mode: lisp-data -*-
-(("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-org.el" . 954)
- ("f:/ORG-mode/test.org" . 614) ("e:/Org/TODO.org" . 545)
+(("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/init.el" . 348)
+ ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-ui.el" . 746)
+ ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-basic.el"
+  . 2329)
+ ("f:/PPE/home-archive/learn2prog/08_testing/README" . 427)
+ ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/elpa/cfrs-20220129.1149/cfrs.el"
+  . 2256)
+ ("f:/PPE/home-archive/learn2prog/08_testing/isPrime-broken1" . 1360)
  ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-func.el"
-  . 4131)
+  . 2487)
+ ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/"
+  (dired-filename
+   . "c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-ui.el"))
+ ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/history" . 1074)
+ ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-org.el" . 954)
+ ("f:/ORG-mode/test.org" . 614) ("e:/Org/TODO.org" . 545)
  ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-packages.el"
   . 285)
- ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/init.el" . 458)
  ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/elpa/atom-one-dark-theme-20210128.1640/atom-one-dark-theme.el"
   . 3954)
  ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/elpa/doom-themes-20250614.958/doom-material-dark-theme.el"
   . 3405)
  ("f:/PPE/home-archive (2) (2)/learn2prog/07_retirement/retirement.c"
   . 87)
- ("f:/Markdown/" (dired-filename . "f:/Markdown/CCT008"))
- ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-ui.el" . 1096)
- ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-basic.el"
-  . 2330))
+ ("f:/Markdown/" (dired-filename . "f:/Markdown/CCT008")))
