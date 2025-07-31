@@ -61,4 +61,44 @@ Other buffer group by `awesome-tab-get-group-name' with project name."
      (awesome-tab-get-group-name (current-buffer))))))
 
 
+;;; org-agenda相关设置
+;; 扫描的盘符（你要改就改这里）
+(defvar my/org-agenda-roots '("E:/" "F:/" "G:/"))
+
+;; 需要跳过的常见系统/巨型目录
+(defvar my/org--exclude-dirs
+  '("$RECYCLE.BIN" "System Volume Information" "Windows"
+    "Program Files" "Program Files (x86)" "ProgramData"
+    ".git" ".hg" ".svn" "node_modules" ".cache" ".venv" "venv"))
+
+(defun my/org--excluded-dir-p (dir)
+  (member (file-name-nondirectory (directory-file-name dir)) my/org--exclude-dirs))
+
+(defun my/org--safe-collect (dir)
+  "从 DIR 递归搜集 .org 文件，权限/IO 错误直接跳过。"
+  (let (out)
+    (when (file-directory-p dir)
+      (condition-case nil
+          (dolist (f (directory-files dir t "\\`[^.]")) ; 跳过 . 和 ..
+            (cond
+             ((file-directory-p f)
+              (unless (my/org--excluded-dir-p f)
+                (setq out (nconc out (my/org--safe-collect f)))))
+             ((and (file-regular-p f)
+                   (string-match-p "\\.org\\'" f))
+              (push (expand-file-name f) out))))
+        (error nil)))
+    out))
+
+(defun my/org--scan-all ()
+  "扫描 E:/F:/G:/ 下所有 .org 文件（已排除系统目录）。"
+  (delete-dups
+   (apply #'append
+          (mapcar (lambda (root)
+                    (when (file-directory-p root)
+                      (my/org--safe-collect root)))
+                  my/org-agenda-roots))))
+
+
+
 (provide 'init-func)

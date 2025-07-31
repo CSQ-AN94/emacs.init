@@ -4,7 +4,18 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages nil))
+ '(package-selected-packages
+   '(all-the-icons-nerd-fonts atom-one-dark-theme centaur-tabs
+                              clang-format company doom-modeline
+                              doom-themes embark-consult
+                              github-dark-vscode-theme
+                              highlight-indent-guides indent-guide
+                              keycast marginalia markdown-mode
+                              orderless org org-bullets org-contrib
+                              quickrun rainbow-delimiters
+                              rainbow-identifiers restart-emacs
+                              treemacs-nerd-icons treemacs-projectile
+                              vertico vscode-dark-plus-theme wgrep)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

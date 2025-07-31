@@ -1,14 +1,19 @@
 (require 'package)
 (setq package-archives '(("gnu"    . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
                          ("nongnu" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
-                         ("melpa"  . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+                         ("melpa"  . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+                         ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
 (package-initialize) ;; You might already have this line
+
 
 ;;防止反复调用 package-refresh-contents 会影响加载速度
 (when (not package-archive-contents)
   (package-refresh-contents))
 
 ;;(package-install 'use-package)
+
+(assq-delete-all 'org package--builtins)
+(assq-delete-all 'org package--builtin-versions)
 
 ;; Setup `use-package'
 (unless (package-installed-p 'use-package)
