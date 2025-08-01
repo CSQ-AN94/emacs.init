@@ -2,6 +2,8 @@
 ;; 这一行代码，将函数 open-init-file 绑定到 <f2> 键上
 (global-set-key (kbd "<f2>") 'open-init-file)
 
+(global-set-key (kbd "<f1>") 'restart-emacs)
+
 (global-set-key (kbd "C-/") #'undo-only)
 (global-set-key (kbd "C-?") #'undo-redo)
 
