@@ -114,10 +114,10 @@ Other buffer group by `centaur-tabs-get-group-name' with project name."
 ;; '(keycast-key ((t (:inherit mode-line :weight bold))))
 ;; '(keycast-command ((t (:inherit mode-line)))))
 
-(use-package keycast
-  :ensure t)
-(add-to-list 'global-mode-string '("" keycast-mode-line))
-(keycast-mode-line-mode t)
+;; (use-package keycast
+;;   :ensure t)
+;; (add-to-list 'global-mode-string '("" keycast-mode-line))
+;; (keycast-mode-line-mode t)
 
 
 ;; nerd-icons
