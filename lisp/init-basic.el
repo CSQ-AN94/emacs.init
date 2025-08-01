@@ -1,11 +1,4 @@
-(when (eq system-type 'windows-nt)
-  (add-hook 'emacs-startup-hook
-    (lambda ()
-      ;; 调用外部命令，切系统输入法到 US 英文 (00000409)
-      (call-process "rundll32.exe" nil 0 nil
-                    "user32.dll,LoadKeyboardLayout" "00000409" "1"))))
-
-
+;;; init.el -*- lexical-binding: t no-byte-compile: t -*-
 
 (setq wgrep-auto-save-buffer t)
 (setq make-backup-files nil)

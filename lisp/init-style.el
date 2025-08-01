@@ -11,17 +11,18 @@
   ;;(define-key c++-mode-map(kbd "TAB") #'indent-for-tab-command))
 
 ;; 指定 clang-format 可执行文件全路径
-(setq clang-format-executable
-      "C:/Users/KevinCSQ/AppData/Local/Programs/Python/Python310/Lib/site-packages/clang_format/data/bin/clang-format.exe")
+;; (setq clang-format-executable
+;;       "C:/Users/KevinCSQ/AppData/Local/Programs/Python/Python310/Lib/site-packages/clang_format/data/bin/clang-format.exe")
 
 
+
+(add-to-list 'exec-path (expand-file-name "bin" user-emacs-directory))
 (use-package clang-format
   :ensure t
   :defer nil        ;; 立刻加载，不延迟
   :demand t         ;; 强制加载
   :config
-  (setq clang-format-executable
-        "C:/Users/KevinCSQ/AppData/Local/Programs/Python/Python310/Lib/site-packages/clang_format/data/bin/clang-format.exe")
+  (setq clang-format-executable "clang-format.exe")
   :bind (("C-c f" . clang-format-buffer)))  ;; C-c f 一键整档
 
 ;; init.el / .emacs 中加：

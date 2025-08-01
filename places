@@ -1,23 +1,26 @@
 ;;; -*- coding: utf-8; mode: lisp-data -*-
-(("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-org.el" . 1157)
- ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/README.org" . 143)
- ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-func.el"
-  . 2487)
- ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-keybindings.el"
-  . 133)
- ("f:/PPE/home-archive/learn2prog/09_testing2/README" . 1358)
- ("f:/PPE/home-archive/learn2prog/09_testing2/tests.txt" . 447)
+(("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-basic.el" . 58)
+ ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-style.el"
+  . 823)
  ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/init.el" . 395)
- ("e:/Org/TODO.org" . 227)
- ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-ui.el" . 3308)
- ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-basic.el"
-  . 763)
+ ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-packages.el"
+  . 285)
+ ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-keybindings.el"
+  . 410)
+ ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-completion.el"
+  . 579)
  ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-tools.el"
   . 629)
- ("f:/PPE/home-archive/learn2prog/07_retirement/retirement.c" . 1643)
+ ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-func.el"
+  . 1583)
+ ("f:/PPE/home-archive/learn2prog/07_retirement/retirement.c" . 1348)
+ ("f:/PPE/home-archive/learn2prog/09_testing2/tests.txt" . 447)
+ ("f:/PPE/home-archive/learn2prog/09_testing2/README" . 1358)
+ ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-org.el" . 1157)
+ ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/README.org" . 143)
+ ("e:/Org/TODO.org" . 227)
+ ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-ui.el" . 3308)
  ("f:/PPE/home-archive/learn2prog/08_testing/README" . 1082)
- ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-completion.el"
-  . 501)
  ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/elpa/cfrs-20220129.1149/cfrs.el"
   . 2256)
  ("f:/PPE/home-archive/learn2prog/08_testing/isPrime-broken1" . 1360)
@@ -25,8 +28,6 @@
   (dired-filename
    . "c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-ui.el"))
  ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/history" . 1074)
- ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/lisp/init-packages.el"
-  . 285)
  ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/elpa/atom-one-dark-theme-20210128.1640/atom-one-dark-theme.el"
   . 3954)
  ("c:/Users/KevinCSQ/AppData/Roaming/.emacs.d/elpa/doom-themes-20250614.958/doom-material-dark-theme.el"
