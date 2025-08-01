@@ -18,6 +18,8 @@
 
 (require 'init-org)
 
+(require 'init-gdb)
+
 (require 'init-style)
 (require 'custom)
 
