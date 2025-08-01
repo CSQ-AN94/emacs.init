@@ -1,6 +1,7 @@
 ;; 基础 UI
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
+(menu-bar-mode -1)
 
 (setq inhibit-startup-screen t)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
@@ -40,7 +41,8 @@
   :config
   ;; 外观
   (setq centaur-tabs-style "bar"
-        centaur-tabs-height 50
+        centaur-tabs-height 60
+        centaur-tabs-bar-height 58
         centaur-tabs-set-icons t 
         centaur-tabs-icon-type 'nerd-icons
         centaur-tabs-plain-icons t
@@ -139,11 +141,12 @@ Other buffer group by `centaur-tabs-get-group-name' with project name."
     (setq-local line-spacing 0)))
 
 
-
+;; modeline
 (use-package doom-modeline
   :ensure t
   :init
   (doom-modeline-mode t))
+
 
 (use-package simple
   :ensure nil

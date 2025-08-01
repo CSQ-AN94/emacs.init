@@ -15,7 +15,8 @@
                               org-contrib quickrun rainbow-delimiters
                               rainbow-identifiers restart-emacs
                               treemacs-nerd-icons treemacs-projectile
-                              vertico vscode-dark-plus-theme wgrep)))
+                              undo-tree vertico vscode-dark-plus-theme
+                              wgrep)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

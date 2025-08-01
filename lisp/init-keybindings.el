@@ -5,8 +5,10 @@
 (global-set-key (kbd "C-/") #'undo-only)
 (global-set-key (kbd "C-?") #'undo-redo)
 
-;; 1) 启用 CUA（含 Ctrl+C/X/V/Z、Shift 选区、C-RET 矩形）
+;; 启用 CUA（含 Ctrl+C/X/V、Shift 选区、C-RET 矩形）
 (cua-mode 1)
+(with-eval-after-load 'cua-base
+  (define-key cua--cua-keys-keymap (kbd "C-z") nil))
 
 (global-set-key (kbd "M-[") #'scroll-down-command)
 (global-set-key (kbd "M-]") #'scroll-up-command)
