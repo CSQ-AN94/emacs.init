@@ -3,10 +3,11 @@
 (setq wgrep-auto-save-buffer t)
 (setq make-backup-files nil)
 
-(server-mode 1)
+;;(server-mode 1)
 (require 'server)
-(unless (server-running-p)
-  (server-start))
+(setq server-name (format "server-%d" (emacs-pid))) ;; 用 PID 做名字
+(server-start)
+
 
 (require 'recentf)
 (recentf-mode 1)

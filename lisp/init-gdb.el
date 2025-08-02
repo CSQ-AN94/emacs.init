@@ -18,7 +18,7 @@
   (dap-ui-mode 1)
   (dap-tooltip-mode 1)
   (require 'dap-gdb-lldb)     ;; 直接走 gdb/lldb
-  (require 'dap-cpptools)     ;; VS Code 的 cpptools 适配（可选）
+  ;;(require 'dap-cpptools)     ;; VS Code 的 cpptools 适配（可选）
   (dap-ui-controls-mode 1)
 
   ;; VS Code 风格快捷键
