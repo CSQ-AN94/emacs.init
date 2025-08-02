@@ -1,3 +1,42 @@
 history
 places
 recentf
+
+# 忽略 Emacs auto-save-list 目录
+auto-save-list/
+# 如果是 saves- 开头的临时文件夹
+auto-save-list/saves-*
+# 忽略 Emacs 备份和临时文件
+*~
+\#*\#
+
+
+auto-save-list
+.cask
+elpa
+anaconda-mode
+company-statistics-cache.el
+.cache/
+eln-cache
+/bin/
+/tutorial/
+/server/
+projects
+/quelpa/
+librime
+transient/history.el
+/.mc-lists.el
+/semanticdb/
+/url/
+tramp
+/.lsp-session-v1
+/org-roam.db
+/.org-id-locations
+/bookmarks
+/persp-confs/
+eshell/history
+eshell/lastdir
+tabsession.el
+elixir-ls
+/nov-places
+/tree-sitter/
