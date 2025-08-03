@@ -6,9 +6,18 @@
 (setq inhibit-startup-screen t)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
-;; 光标 & 主题 & 字体
+;; 光标
 (add-to-list 'default-frame-alist '(cursor-type . (bar . 3)))
+;;  Normal（普通）模式：空心方块
+(setq evil-normal-state-cursor   '(hollow))
+;;  Insert State (I) — 3px
+(setq evil-insert-state-cursor   '(bar . 3))
+;;  Visual（可视）模式：空心方块，与普通相同，避免干扰
+(setq evil-visual-state-cursor   '(hollow))
+;;  Operator-Pending State (O) — 2px 下划线
+(setq evil-operator-state-cursor '(hbar . 3))
 
+;; 主题 & 字体
 (use-package atom-one-dark-theme
   :ensure t
   :config
@@ -154,5 +163,6 @@ Other buffer group by `centaur-tabs-get-group-name' with project name."
   :init
   (progn
     (setq column-number-mode t)))
+
 
 (provide 'init-ui)

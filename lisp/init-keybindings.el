@@ -39,7 +39,9 @@
 (global-set-key (kbd "C-c p f") 'project-find-file)
 (global-set-key (kbd "C-c p s") 'consult-ripgrep)
 
-
+(with-eval-after-load 'corfu
+  (define-key corfu-map (kbd "RET") nil)
+  (define-key corfu-map (kbd "<return>") nil))
 
 
 (provide 'init-keybindings)
