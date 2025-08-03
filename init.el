@@ -14,6 +14,9 @@
 (require 'init-func)
 
 (require 'init-keybindings)
+
+(require 'init-evil)
+
 (require 'init-ui)
 
 (require 'init-org)
