@@ -1,3 +1,10 @@
+;;; init.el -*- lexical-binding: t no-byte-compile: t -*-
+
+;; (use-package which-key
+;;   :hook (after-init . which-key-mode)
+;;   :ensure t
+;;   :init
+;;   (setq which-key-side-window-location 'bottom))
 
 ;; 这一行代码，将函数 open-init-file 绑定到 <f2> 键上
 (global-set-key (kbd "<f2>") 'open-init-file)
@@ -42,6 +49,91 @@
 (with-eval-after-load 'corfu
   (define-key corfu-map (kbd "RET") nil)
   (define-key corfu-map (kbd "<return>") nil))
+
+(with-eval-after-load 'org
+  (define-key org-mode-map (kbd "C-c C-c") 'org-toggle-checkbox))
+
+
+(evil-define-key 'normal dired-mode-map
+    (kbd "<RET>") 'dired-find-alternate-file
+    (kbd "C-k") 'dired-up-directory
+    "`" 'dired-open-term
+    "q" 'quit-window
+     "o" 'dired-find-file-other-window
+     ;;"s" 'hydra-dired-quick-sort/body
+     ;;"z" 'dired-get-size
+     ;;"!" 'zilongshanren/do-shell-and-copy-to-kill-ring
+     ")" 'dired-omit-mode)
+
+(use-package general
+  :init
+  (with-eval-after-load 'evil
+    (general-add-hook 'after-init-hook
+                      (lambda (&rest _)
+                        (when-let ((messages-buffer (get-buffer "*Messages*")))
+                          (with-current-buffer messages-buffer
+                            (evil-normalize-keymaps))))
+                      nil
+                      nil
+                      t))
+
+
+  (general-create-definer global-definer
+    :keymaps 'override
+    :states '(insert emacs normal hybrid motion visual operator)
+    :prefix "SPC"
+    :non-normal-prefix "C-SPC")
+
+  (defmacro +general-global-menu! (name infix-key &rest body)
+    "Create a definer named +general-global-NAME wrapping global-definer.
+Create prefix map: +general-global-NAME. Prefix bindings in BODY with INFIX-KEY."
+    (declare (indent 2))
+    `(progn
+       (general-create-definer ,(intern (concat "+general-global-" name))
+         :wrapping global-definer
+         :prefix-map ',(intern (concat "+general-global-" name "-map"))
+         :infix ,infix-key
+         :wk-full-keys nil
+         "" '(:ignore t :which-key ,name))
+       (,(intern (concat "+general-global-" name))
+        ,@body)))
+
+  (general-create-definer global-leader
+    :keymaps 'override
+    :states '(emacs normal hybrid motion visual operator)
+    :prefix ","
+    "" '(:ignore t :which-key (lambda (arg) `(,(cadr (split-string (car arg) " ")) . ,(replace-regexp-in-string "-mode$" "" (symbol-name major-mode)))))))
+
+(use-package general
+  :init
+  (global-definer
+    "!" 'shell-command
+    "SPC" 'execute-extended-command
+    "'" 'vertico-repeat
+    "+" 'text-scale-increase
+    "-" 'text-scale-decrease
+    "u" 'universal-argument
+    "hdf" 'describe-function
+    "hdv" 'describe-variable
+    "hdk" 'describe-key
+    )
+
+  (+general-global-menu! "buffer" "b"
+    "d" 'kill-current-buffer
+    "b" '(consult-buffer :which-key "consult buffer")
+    "B" 'switch-to-buffer
+    "p" 'previous-buffer
+    "R" 'rename-buffer
+    "M" '((lambda () (interactive) (switch-to-buffer "*Messages*"))
+          :which-key "messages-buffer")
+    "n" 'next-buffer
+    "i" 'ibuffer
+    "f" 'my-open-current-directory
+    "k" 'kill-buffer
+    "y" 'copy-buffer-name
+    "K" 'kill-other-buffers))
+
+
 
 
 (provide 'init-keybindings)

@@ -8,15 +8,18 @@
    '(all-the-icons-nerd-fonts atom-one-dark-theme centaur-tabs
                               clang-format company corfu dap-mode
                               doom-modeline doom-themes embark-consult
-                              evil github-dark-vscode-theme
+                              evil evil-anzu evil-collection
+                              evil-matchit evil-nerd-commenter
+                              evil-snipe evil-surround general
+                              github-dark-vscode-theme
                               highlight-indent-guides indent-guide
                               keycast kind-icon lsp-ui marginalia
                               orderless org-bullets org-contrib
                               quickrun rainbow-delimiters
                               rainbow-identifiers restart-emacs
-                              treemacs-nerd-icons treemacs-projectile
-                              undo-tree vertico vscode-dark-plus-theme
-                              wgrep)))
+                              smart-mode-line treemacs-nerd-icons
+                              treemacs-projectile undo-tree vertico
+                              vscode-dark-plus-theme wgrep)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

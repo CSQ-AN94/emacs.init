@@ -8,14 +8,20 @@
 (load custom-file 'no-error 'no-message)
 
 (require 'init-basic)
-(require 'init-packages)
-(require 'init-tools)
+
 (require 'init-completion)
+
+(require 'init-evil)
+
+(require 'init-tools)
+
 (require 'init-func)
+
+(require 'init-packages)
+
 
 (require 'init-keybindings)
 
-(require 'init-evil)
 
 (require 'init-ui)
 

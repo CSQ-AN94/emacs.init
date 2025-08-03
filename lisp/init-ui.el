@@ -156,13 +156,37 @@ Other buffer group by `centaur-tabs-get-group-name' with project name."
   :init
   (doom-modeline-mode t))
 
-
 (use-package simple
   :ensure nil
   :hook (after-init . size-indication-mode)
   :init
   (progn
     (setq column-number-mode t)))
+
+;; ;; 可视化空格/Tab/行尾空白
+;; (setq whitespace-style '(face tabs spaces trailing space-mark tab-mark))
+;; (setq whitespace-display-mappings
+;;       '((space-mark 32 [183])      ; 空格显示为 · (U+00B7)
+;;         (tab-mark   9  [187 9])))  ; Tab 显示为 »[Tab]
+;; (global-whitespace-mode 0)
+;;---------
+;; (setq whitespace-style '(face tabs spaces trailing space-mark tab-mark))
+;; (setq whitespace-display-mappings
+;;       '((space-mark 32 [183])
+;;         (tab-mark   9  [187 9])))
+
+;; (defun my/whitespace-when-selecting ()
+;;   (if (use-region-p)
+;;       (unless whitespace-mode (whitespace-mode 1))
+;;     (when whitespace-mode (whitespace-mode -1))))
+
+;; (add-hook 'activate-mark-hook   #'my/whitespace-when-selecting)
+;; (add-hook 'deactivate-mark-hook #'my/whitespace-when-selecting)
+;; (add-hook 'post-command-hook    #'my/whitespace-when-selecting)
+
+
+
+
 
 
 (provide 'init-ui)

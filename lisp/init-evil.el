@@ -18,17 +18,6 @@
   (define-key evil-motion-state-map (kbd "[ b") 'previous-buffer)
   (define-key evil-motion-state-map (kbd "] b") 'next-buffer)
 
-  (evil-define-key 'normal dired-mode-map
-    (kbd "<RET>") 'dired-find-alternate-file
-    (kbd "C-k") 'dired-up-directory
-    "`" 'dired-open-term
-    "q" 'quit-window
-     "o" 'dired-find-file-other-window
-     ;;"s" 'hydra-dired-quick-sort/body
-     ;;"z" 'dired-get-size
-     ;;"!" 'zilongshanren/do-shell-and-copy-to-kill-ring
-     ")" 'dired-omit-mode)
-
   
   ;; https://emacs.stackexchange.com/questions/46371/how-can-i-get-ret-to-follow-org-mode-links-when-using-evil-mode
   (with-eval-after-load 'evil-maps
@@ -42,6 +31,49 @@
   (setq undo-tree-auto-save-history nil)
   (evil-set-undo-system 'undo-tree))
 
+(use-package evil-anzu
+  :ensure t
+  :after evil
+  :diminish
+  :demand t
+  :init
+  (global-anzu-mode t))
 
+(use-package evil-collection
+  :ensure t
+  :demand t
+  :config
+  (setq evil-collection-mode-list (remove 'lispy evil-collection-mode-list))
+  (evil-collection-init)
+
+  (cl-loop for (mode . state) in
+           '((org-agenda-mode . emacs)
+             (Custom-mode . emacs)
+             (eshell-mode . emacs)
+             (makey-key-mode . motion))
+           do (evil-set-initial-state mode state)))
+
+(use-package evil-surround
+  :ensure t
+  :init
+  (global-evil-surround-mode 1))
+
+(use-package evil-nerd-commenter
+  :init
+  (define-key evil-normal-state-map (kbd "//") 'evilnc-comment-or-uncomment-lines)
+  (define-key evil-visual-state-map (kbd "//") 'evilnc-comment-or-uncomment-lines)
+  )
+
+(use-package evil-snipe
+  :ensure t
+  :diminish
+  :init
+  (evil-snipe-mode +1)
+  (evil-snipe-override-mode +1))
+
+(use-package evil-matchit
+  :ensure
+  :init
+  (global-evil-matchit-mode 1))
 
 (provide 'init-evil)
