@@ -47,7 +47,7 @@
   (evil-collection-init)
 
   (cl-loop for (mode . state) in
-           '((org-agenda-mode . emacs)
+           '((org-agenda-mode . normal)
              (Custom-mode . emacs)
              (eshell-mode . emacs)
              (makey-key-mode . motion))
@@ -75,5 +75,19 @@
   :ensure
   :init
   (global-evil-matchit-mode 1))
+
+(use-package iedit
+  :ensure t
+  :init
+  (setq iedit-toggle-key-default nil)
+  :config
+  (define-key iedit-mode-keymap (kbd "M-h") 'iedit-restrict-function)
+  (define-key iedit-mode-keymap (kbd "M-i") 'iedit-restrict-current-line))
+
+(use-package evil-multiedit
+  :ensure t
+  :commands (evil-multiedit-default-keybinds)
+  :init
+  (evil-multiedit-default-keybinds))
 
 (provide 'init-evil)

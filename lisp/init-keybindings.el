@@ -6,6 +6,8 @@
 ;;   :init
 ;;   (setq which-key-side-window-location 'bottom))
 
+
+
 ;; 这一行代码，将函数 open-init-file 绑定到 <f2> 键上
 (global-set-key (kbd "<f2>") 'open-init-file)
 
@@ -15,7 +17,14 @@
 (global-set-key (kbd "C-?") #'undo-redo)
 
 ;; 启用 CUA（含 Ctrl+C/X/V、Shift 选区、C-RET 矩形）
-(cua-mode 1)
+(cua-mode 0)
+(with-eval-after-load 'evil
+  ;; 进入 Insert/Emacs 状态时开启 CUA
+  (add-hook 'evil-insert-state-entry-hook (lambda () (cua-mode +1)))
+  (add-hook 'evil-emacs-state-entry-hook  (lambda () (cua-mode +1)))
+  ;; 离开 Insert/Emacs 状态时关闭 CUA
+  (add-hook 'evil-insert-state-exit-hook  (lambda () (cua-mode -1)))
+  (add-hook 'evil-emacs-state-exit-hook   (lambda () (cua-mode -1))))
 (with-eval-after-load 'cua-base
   (define-key cua--cua-keys-keymap (kbd "C-z") nil))
 
@@ -112,6 +121,7 @@ Create prefix map: +general-global-NAME. Prefix bindings in BODY with INFIX-KEY.
     "'" 'vertico-repeat
     "+" 'text-scale-increase
     "-" 'text-scale-decrease
+    "v" 'er/expand-region
     "u" 'universal-argument
     "hdf" 'describe-function
     "hdv" 'describe-variable

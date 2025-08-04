@@ -9,13 +9,14 @@
                               clang-format company corfu dap-mode
                               doom-modeline doom-themes embark-consult
                               evil evil-anzu evil-collection
-                              evil-matchit evil-nerd-commenter
-                              evil-snipe evil-surround general
+                              evil-matchit evil-multiedit
+                              evil-nerd-commenter evil-snipe
+                              evil-surround expand-region general
                               github-dark-vscode-theme
-                              highlight-indent-guides indent-guide
-                              keycast kind-icon lsp-ui marginalia
-                              orderless org-bullets org-contrib
-                              quickrun rainbow-delimiters
+                              highlight-indent-guides iedit
+                              indent-guide keycast kind-icon lsp-ui
+                              marginalia orderless org-bullets
+                              org-contrib quickrun rainbow-delimiters
                               rainbow-identifiers restart-emacs
                               smart-mode-line treemacs-nerd-icons
                               treemacs-projectile undo-tree vertico

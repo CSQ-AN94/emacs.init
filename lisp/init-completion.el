@@ -48,5 +48,8 @@
         (add-hook
          'embark-collect-mode-hook
          #'consult-preview-at-point-mode))))
+;; make consult-ripgrep work
+(add-to-list 'process-coding-system-alist 
+             '("[rR][gG]" . (utf-8-dos . windows-1251-dos)))
 
 (provide 'init-completion)
