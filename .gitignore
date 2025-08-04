@@ -40,3 +40,17 @@ tabsession.el
 elixir-ls
 /nov-places
 /tree-sitter/
+
+# 忽略 Org-persist 缓存
+.org-persist/
+
+# 忽略 auto-save 和 backup 文件
+*~
+\#*\#
+*.elc
+
+# 忽略 session、desktop、recentf 等
+session.*
+desktop
+recentf
+places
