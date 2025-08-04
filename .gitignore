@@ -54,3 +54,12 @@ session.*
 desktop
 recentf
 places
+
+# Org·Persist 自动缓存
+org-persist/
+org-*/
+# Emacs 自动生成文件
+*.elc
+*~
+\#*\#
+EOF
