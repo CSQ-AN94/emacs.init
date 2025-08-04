@@ -16,12 +16,46 @@
 (setq evil-visual-state-cursor   '(hollow))
 ;;  Operator-Pending State (O) — 2px 下划线
 (setq evil-operator-state-cursor '(hbar . 3))
+;;  Motion-state
+(setq evil-motion-state-cursor   '(hollow))
+
+;; delimiters
+(electric-pair-mode t)
+(add-hook 'prog-mode-hook #'show-paren-mode)
+
+(require 'rainbow-delimiters)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 ;; 主题 & 字体
+;; (use-package doom-themes
+;;   :ensure t
+;;   :init
+;;   (if (display-graphic-p)
+;;       (load-theme 'doom-solarized-dark)
+;;     (load-theme 'doom-tomorrow-night)))
+
+;; (use-package doom-themes
+;;   :ensure t
+;;   :init
+;;   (if (display-graphic-p)
+;;       (load-theme 'doom-solarized-light)
+;;     (load-theme 'doom-tomorrow-night)))
+
+;; (set-face-attribute 'show-paren-match nil
+;;                     :foreground "#61AFEF"  ; 匹配时，前景色
+;;                     :background "#8BE9FD"         ; 不改背景
+;;                     :weight     'bold)      ;
+;;---
 (use-package atom-one-dark-theme
   :ensure t
   :config
   (load-theme 'atom-one-dark t))
+
+(set-face-attribute 'show-paren-match nil
+                    :foreground  "#61AFEF" ; 匹配时，前景色
+                    :background "#3E4452"         ; 不改背景
+                    :weight     'bold)      ;
+
 
 (set-face-attribute 'default nil :family "JetBrainsMono NF" :height 140)
 
@@ -37,11 +71,6 @@
 ;; 当前行高亮
 (global-hl-line-mode 1)
 
-;; 匹配括号
-(electric-pair-mode t)
-(add-hook 'prog-mode-hook #'show-paren-mode)
-
-
 ;;tabs
 (use-package centaur-tabs
   :ensure t
@@ -51,7 +80,7 @@
   ;; 外观
   (setq centaur-tabs-style "bar"
         centaur-tabs-height 60
-        centaur-tabs-bar-height 58
+        centaur-tabs-bar-height 56
         centaur-tabs-set-icons t 
         centaur-tabs-icon-type 'nerd-icons
         centaur-tabs-plain-icons t
@@ -110,11 +139,6 @@ Other buffer group by `centaur-tabs-get-group-name' with project name."
   (add-hook 'org-agenda-mode-hook  #'centaur-tabs-local-mode)
 
   (centaur-tabs-mode 1))
-
-
-;; delimiters
-(require 'rainbow-delimiters)
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 
 ;;(keycast-mode-line-mode 0)
@@ -186,6 +210,23 @@ Other buffer group by `centaur-tabs-get-group-name' with project name."
 
 
 
+;;--------lsp mode----------
+;; (setq lsp-eldoc-enable-hover nil)
+;; (setq lsp-semantic-tokens-enable nil)
+;; (with-eval-after-load 'lsp-mode
+;;   (setq lsp-semantic-tokens-enable nil)
+;;   ;; 如果不想要面包屑
+;;   (setq lsp-headerline-breadcrumb-enable nil))
+;; (setq lsp-ui-doc-enable nil)
+;; ;; 关闭 lsp-ui-doc 和 sideline，但保留 peek 和 imenu
+;; (with-eval-after-load 'lsp-ui
+;;   (setq lsp-ui-doc-enable    nil
+;;         lsp-ui-sideline-enable nil
+;;         ;; 想关闭 peek、imenu 就把下面也设为 nil
+;;         lsp-ui-peek-enable   nil
+;;         lsp-ui-imenu-enable  nil))
+;; (with-eval-after-load 'lsp-mode
+;;   (setq lsp-semantic-tokens-enable nil))
 
 
 

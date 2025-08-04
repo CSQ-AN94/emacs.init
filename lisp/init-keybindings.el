@@ -19,12 +19,18 @@
 ;; 启用 CUA（含 Ctrl+C/X/V、Shift 选区、C-RET 矩形）
 (cua-mode 0)
 (with-eval-after-load 'evil
-  ;; 进入 Insert/Emacs 状态时开启 CUA
+  ;; 插入/Emacs 模式进出时开关 CUA
   (add-hook 'evil-insert-state-entry-hook (lambda () (cua-mode +1)))
   (add-hook 'evil-emacs-state-entry-hook  (lambda () (cua-mode +1)))
-  ;; 离开 Insert/Emacs 状态时关闭 CUA
   (add-hook 'evil-insert-state-exit-hook  (lambda () (cua-mode -1)))
-  (add-hook 'evil-emacs-state-exit-hook   (lambda () (cua-mode -1))))
+  (add-hook 'evil-emacs-state-exit-hook   (lambda () (cua-mode -1)))
+  (add-hook 'minibuffer-setup-hook (lambda () (cua-mode +1)))
+  (add-hook 'minibuffer-exit-hook  (lambda () (cua-mode -1)))
+
+  ;; **只在 Visual State 下** 用 C-c 来拷贝选区
+  (define-key evil-visual-state-map (kbd "C-c") #'cua-copy-region))
+
+;; 保留你之前对 C-z 的清除
 (with-eval-after-load 'cua-base
   (define-key cua--cua-keys-keymap (kbd "C-z") nil))
 
@@ -63,12 +69,13 @@
   (define-key org-mode-map (kbd "C-c C-c") 'org-toggle-checkbox))
 
 
+
 (evil-define-key 'normal dired-mode-map
     (kbd "<RET>") 'dired-find-alternate-file
     (kbd "C-k") 'dired-up-directory
     "`" 'dired-open-term
     "q" 'quit-window
-     "o" 'dired-find-file-other-window
+    "o" 'dired-find-file-other-window
      ;;"s" 'hydra-dired-quick-sort/body
      ;;"z" 'dired-get-size
      ;;"!" 'zilongshanren/do-shell-and-copy-to-kill-ring
