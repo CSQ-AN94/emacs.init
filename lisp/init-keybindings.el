@@ -124,6 +124,7 @@ Create prefix map: +general-global-NAME. Prefix bindings in BODY with INFIX-KEY.
   :init
   (global-definer
     "!" 'shell-command
+    "s"  'shell
     "SPC" 'execute-extended-command
     "'" 'vertico-repeat
     "+" 'text-scale-increase

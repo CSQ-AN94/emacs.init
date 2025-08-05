@@ -26,7 +26,7 @@
 (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
-;; 主题 & 字体
+;; 主题
 ;; (use-package doom-themes
 ;;   :ensure t
 ;;   :init
@@ -57,12 +57,32 @@
 ;;                     :weight     'bold)      ;
 
 
+;;字体
 (set-face-attribute 'default nil :family "JetBrainsMono NF" :height 140)
 
 (setq-default line-spacing 0.18)
 
 (dolist (charset '(han cjk-misc kana bopomofo))
   (set-fontset-font t charset (font-spec :family "Noto Sans SC" :height 140)))
+
+;; 关闭“只用默认字体显示符号”
+(setq use-default-font-for-symbols nil)
+
+;; (when (display-graphic-p)
+;;   (dolist (font '("NotoColorEmoji" "Segoe UI Emoji"))
+;;     (set-fontset-font
+;;      t 'emoji
+;;      (font-spec :family font)
+;;      nil 'prepend)))
+
+(when (display-graphic-p)
+  (dolist (script '(emoji symbol))
+    (dolist (font '("Segoe UI Emoji" "Noto Color Emoji"))
+      (set-fontset-font
+       t script
+       (font-spec :family font)
+       nil 'prepend))))
+
 
 ;;行号
 (global-display-line-numbers-mode 1)
