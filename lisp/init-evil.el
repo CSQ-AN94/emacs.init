@@ -47,7 +47,7 @@
   (evil-collection-init)
 
   (cl-loop for (mode . state) in
-           '((org-agenda-mode . normal)
+           '((org-agenda-mode . emacs)
              (Custom-mode . emacs)
              (eshell-mode . emacs)
              (makey-key-mode . motion))

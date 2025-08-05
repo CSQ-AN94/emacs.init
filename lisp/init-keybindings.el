@@ -20,15 +20,17 @@
 (cua-mode 0)
 (with-eval-after-load 'evil
   ;; 插入/Emacs 模式进出时开关 CUA
-  (add-hook 'evil-insert-state-entry-hook (lambda () (cua-mode +1)))
-  (add-hook 'evil-emacs-state-entry-hook  (lambda () (cua-mode +1)))
+  (add-hook 'evil-insert-state-entry-hook #'cua-mode)
+  (add-hook 'evil-emacs-state-entry-hook  #'cua-mode)
   (add-hook 'evil-insert-state-exit-hook  (lambda () (cua-mode -1)))
   (add-hook 'evil-emacs-state-exit-hook   (lambda () (cua-mode -1)))
-  (add-hook 'minibuffer-setup-hook (lambda () (cua-mode +1)))
-  (add-hook 'minibuffer-exit-hook  (lambda () (cua-mode -1)))
+  (add-hook 'minibuffer-setup-hook        #'cua-mode)
+  (add-hook 'minibuffer-exit-hook         (lambda () (cua-mode -1)))
 
   ;; **只在 Visual State 下** 用 C-c 来拷贝选区
   (define-key evil-visual-state-map (kbd "C-c") #'cua-copy-region))
+  (define-key evil-insert-state-map (kbd "C-v") #'cua-paste-region)
+  (define-key evil-emacs-state-map  (kbd "C-v") #'cua-paste-region)
 
 ;; 保留你之前对 C-z 的清除
 (with-eval-after-load 'cua-base

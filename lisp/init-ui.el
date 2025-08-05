@@ -258,6 +258,7 @@ Other buffer group by `centaur-tabs-get-group-name' with project name."
 (use-package doom-modeline
   :ensure t
   :init
+  (setq doom-modeline-bar-width 6)
   ;; 仅关闭 modal 图标，保留文本 <> 表示
   (setq doom-modeline-modal-icon nil
         doom-modeline-modal-modern-icon nil)
