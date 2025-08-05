@@ -81,7 +81,7 @@ Supports exporting consult-grep to wgrep, file to wdired, and consult-location t
 
 ;;; org-agenda相关设置
 ;; 扫描的盘符（你要改就改这里）
-(defvar my/org-agenda-roots '("E:/" "F:/" "G:/"))
+(defvar my/org-agenda-roots '("E:/ORG_SCHEDULE/" "G:/ORG_SCHEDULE/"))
 
 ;; 需要跳过的常见系统/巨型目录
 (defvar my/org--exclude-dirs
@@ -109,7 +109,7 @@ Supports exporting consult-grep to wgrep, file to wdired, and consult-location t
     out))
 
 (defun my/org--scan-all-elisp ()
-  "原始 Elisp 版：扫描 E:/F:/G:/ 下所有 .org 文件（已排除系统目录）。"
+  "原始 Elisp 版：扫描指定目录下所有 .org 文件（已排除系统目录）。"
   (delete-dups
    (apply #'append
           (mapcar (lambda (root)
@@ -131,6 +131,27 @@ Supports exporting consult-grep to wgrep, file to wdired, and consult-location t
       ;; 回落到原来的 Elisp 版本
       (my/org--scan-all-elisp)))))
 
+(defvar my/org--agenda-before-buffers nil)
+(defvar my/org--agenda-origin-buffer nil)
+
+(defun my/org--org-buffers ()
+  "返回当前所有 .org 文件缓冲区（buffer 对象列表）。"
+  (let (res)
+    (dolist (b (buffer-list) (nreverse res))
+      (when (and (buffer-file-name b)
+                 (string-match-p "\\.org\\(\\.gpg\\)?\\'" (buffer-file-name b)))
+        (push b res)))))
+
+(defun my/org--kill-new-org-buffers (before origin)
+  "只杀掉相对 BEFORE 新产生的 .org 缓冲区；保留可见/已改/原始缓冲区。"
+  (dolist (b (buffer-list))
+    (when (and (buffer-file-name b)
+               (string-match-p "\\.org\\(\\.gpg\\)?\\'" (buffer-file-name b))
+               (not (memq b before))                 ; 本次新开的
+               (not (eq b origin))                   ; 回去的那个原缓冲区
+               (not (get-buffer-window b 'visible))  ; 不杀可见的
+               (not (buffer-modified-p b)))          ; 不杀已修改的
+      (kill-buffer b))))
 
 
 (provide 'init-func)

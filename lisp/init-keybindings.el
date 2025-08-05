@@ -29,6 +29,9 @@
 
   ;; **只在 Visual State 下** 用 C-c 来拷贝选区
   (define-key evil-visual-state-map (kbd "C-c") #'cua-copy-region))
+
+  (define-key evil-insert-state-map (kbd "C-c") #'cua-copy-region)
+  (define-key evil-emacs-state-map  (kbd "C-c") #'cua-copy-region)
   (define-key evil-insert-state-map (kbd "C-v") #'cua-paste-region)
   (define-key evil-emacs-state-map  (kbd "C-v") #'cua-paste-region)
 
