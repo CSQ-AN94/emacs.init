@@ -21,19 +21,63 @@
 
 ;; delimiters
 (electric-pair-mode t)
-(add-hook 'prog-mode-hook #'show-paren-mode)
+;; (add-hook 'prog-mode-hook #'show-paren-mode)
+
+;; (setq show-paren-delay 0
+;;       show-paren-style 'mixed)   ;; 光标在括号上时高亮另一边；不在上面时高亮整个表达式
+;; (show-paren-mode 1)
+
+;; ;; 2) 让高亮“跟随主题”：不要写死前景/背景色，改用 :inherit
+;; (custom-set-faces
+;;  '(show-paren-match
+;;    ((t (:inherit highlight :weight bold :underline nil
+;;         :background unspecified :foreground unspecified))))
+;;  '(show-paren-mismatch
+;;    ((t (:inherit error :weight bold :inverse-video t
+;;                  :background unspecified :foreground unspecified)))))
+
+(show-paren-mode 1)
+(custom-set-faces
+ ;; 匹配成功时：加粗＋细框
+ '(show-paren-match
+   ((t (:weight bold
+        :box (:line-width 2 :style nil)
+        :background unspecified :foreground unspecified))))
+ ;; 匹配失败时：同样加粗＋细框，并继承 error 提示色
+ '(show-paren-mismatch
+   ((t (:inherit error :weight bold
+        :box (:line-width 1 :style nil)
+        :background unspecified :foreground unspecified)))))
+
 
 (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 ;; 主题
+
+;;;doom-nord-light
 ;; (use-package doom-themes
 ;;   :ensure t
 ;;   :init
 ;;   (if (display-graphic-p)
-;;       (load-theme 'doom-solarized-dark)
+;;       (load-theme 'doom-nord-light)
 ;;     (load-theme 'doom-tomorrow-night)))
 
+;;;doom-moonlight
+;; (use-package doom-themes
+;;   :ensure t
+;;   :init
+;;   :config
+;;   (load-theme 'doom-moonlight))
+
+;;;doom-tokyo-night
+;; (use-package doom-themes
+;;   :ensure t
+;;   :init
+;;   :config
+;;   (load-theme 'doom-tokyo-night))
+
+;;;doom-solarized-light
 (use-package doom-themes
   :ensure t
   :init
@@ -45,7 +89,8 @@
                     :foreground "#61AFEF"  ; 匹配时，前景色
                     :background "#8BE9FD"         ; 不改背景
                     :weight     'bold)      ;
-;;---
+
+;;;atom-one-dark
 ;; (use-package atom-one-dark-theme
 ;;   :ensure t
 ;;   :config
@@ -68,20 +113,16 @@
 ;; 关闭“只用默认字体显示符号”
 (setq use-default-font-for-symbols nil)
 
-;; (when (display-graphic-p)
-;;   (dolist (font '("NotoColorEmoji" "Segoe UI Emoji"))
-;;     (set-fontset-font
-;;      t 'emoji
-;;      (font-spec :family font)
-;;      nil 'prepend)))
-
 (when (display-graphic-p)
-  (dolist (script '(emoji symbol))
-    (dolist (font '("Segoe UI Emoji" "Noto Color Emoji"))
-      (set-fontset-font
-       t script
-       (font-spec :family font)
-       nil 'prepend))))
+  ;; 1) 先给 emoji 脚本绑定表情字体列表
+  (dolist (font '("Segoe UI Emoji" "Noto Color Emoji""Noto Sans Symbols 2" "Symbols Nerd Font Mono"))
+    (set-fontset-font t 'emoji (font-spec :family font) nil 'prepend))
+
+  ;; 2) 再给 symbol 脚本绑定你想要的顺序：
+  ;;    - 最优先：Noto Sans Symbols2 （负责⏴/⏵等符号）
+  ;;    - 备用：Segoe UI Emoji、Noto Color Emoji（以防某些符号在前者里缺失）
+  (dolist (font '("Noto Sans Symbols 2" "Segoe UI Emoji" "Noto Color Emoji" "Symbols Nerd Font Mono"))
+    (set-fontset-font t 'symbol (font-spec :family font) nil 'prepend)))
 
 
 ;;行号
@@ -99,16 +140,35 @@
   :config
   ;; 外观
   (setq centaur-tabs-style "bar"
-        centaur-tabs-height 60
+        centaur-tabs-height 50
         centaur-tabs-bar-height 56
         centaur-tabs-set-icons t 
         centaur-tabs-icon-type 'nerd-icons
         centaur-tabs-plain-icons t
-     ;; centaur-tabs-set-bar 'under
-     ;; x-underline-at-descent-line t
+      ;;centaur-tabs-set-bar 'under
+      ;;x-underline-at-descent-line t
+      ;;centaur-tabs-set-bar 'over
         centaur-tabs-set-modified-marker t
         centaur-tabs-modified-marker "•"
         centaur-tabs-enable-buffer-reordering t)
+  (setq centaur-tabs-left-edge-margin nil)
+  (setq centaur-tabs-show-navigation-buttons t
+        centaur-tabs-backward/forward t)
+
+  ;;;排序
+  (centaur-tabs-enable-buffer-reordering)
+  ;; When the currently selected tab(A) is at the right of the last visited
+  ;; tab(B), move A to the right of B. When the currently selected tab(A) is
+  ;; at the left of the last visited tab(B), move A to the left of B
+  (setq centaur-tabs-adjust-buffer-order t)
+  ;; Move the currently selected tab to the left of the the last visited tab.
+  (setq centaur-tabs-adjust-buffer-order 'left)
+  ;; Move the currently selected tab to the right of the the last visited tab.
+  (setq centaur-tabs-adjust-buffer-order 'right)
+  (centaur-tabs-enable-buffer-alphabetical-reordering)
+  (setq centaur-tabs-adjust-buffer-order t)
+
+  (centaur-tabs-change-fonts (face-attribute 'default :font) 140)
   
   (centaur-tabs-mode t)
   ;; 关键：让 header-line（包含右侧空白区）跟主题的 mode-line 颜色对齐
@@ -198,8 +258,29 @@ Other buffer group by `centaur-tabs-get-group-name' with project name."
 (use-package doom-modeline
   :ensure t
   :init
-  (doom-modeline-mode t))
-
+  ;; 仅关闭 modal 图标，保留文本 <> 表示
+  (setq doom-modeline-modal-icon nil
+        doom-modeline-modal-modern-icon nil)
+  ;; 其他所有图标依旧生效
+  ;; (不要改 doom-modeline-icon、doom-modeline-major-mode-icon 等)
+  :config
+  (doom-modeline-mode 1))
+;;;modal 字样加粗
+(with-eval-after-load 'doom-modeline
+  (dolist (face '(doom-modeline-evil-emacs-state
+                  doom-modeline-evil-normal-state
+                  doom-modeline-evil-insert-state
+                  doom-modeline-evil-visual-state
+                  doom-modeline-evil-motion-state
+                  doom-modeline-evil-replace-state
+                  doom-modeline-evil-operator-state
+                  doom-modeline-evil-user-state))
+    (set-face-attribute face nil
+                        :weight 'bold
+                        :height 1.1
+                        :inherit 'mode-line-emphasis
+                        )))
+;;行/字节统计（size-indication-mode） 列号（column-number-mode）
 (use-package simple
   :ensure nil
   :hook (after-init . size-indication-mode)
