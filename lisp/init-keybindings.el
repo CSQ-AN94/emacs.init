@@ -150,7 +150,11 @@ Create prefix map: +general-global-NAME. Prefix bindings in BODY with INFIX-KEY.
     "y" 'copy-buffer-name
     "K" 'kill-other-buffers))
 
-
+(with-eval-after-load 'evil
+  (dolist (map '(evil-normal-state-map evil-insert-state-map evil-visual-state-map
+                                       evil-emacs-state-map evil-replace-state-map evil-operator-state-map))
+    (define-key (symbol-value map) (kbd "C-, m") #'evil-motion-state))
+  (define-key evil-motion-state-map (kbd "C-, m") #'evil-normal-state))
 
 
 (provide 'init-keybindings)

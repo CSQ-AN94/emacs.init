@@ -3,6 +3,8 @@
                          ("nongnu" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
                          ("melpa-tuna"  . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
                          ("melpa" . "https://melpa.org/packages/")
+                         ("melpa-stable" . "https://stable.melpa.org/packages/")
+                         ("elpa" . "http://tromey.com/elpa/")
                          ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
 (package-initialize) ;; You might already have this line
 

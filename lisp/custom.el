@@ -9,7 +9,7 @@
      "0f1341c0096825b1e5d8f2ed90996025a0d013a0978677956a9e61408fcd2c77"
      default))
  '(package-selected-packages
-   '(all-the-icons-nerd-fonts atom-one-dark-theme centaur-tabs
+   '(all-the-icons-nerd-fonts atom-one-dark-theme auctex centaur-tabs
                               clang-format company corfu dap-mode
                               doom-modeline doom-themes embark-consult
                               evil evil-anzu evil-collection
@@ -20,7 +20,8 @@
                               highlight-indent-guides iedit
                               indent-guide keycast kind-icon
                               lsp-bridge lsp-ui marginalia orderless
-                              org-bullets org-contrib quickrun
+                              org-bullets org-contrib pdf-tools
+                              pdf-view-mode quickrun
                               rainbow-delimiters rainbow-identifiers
                               restart-emacs smart-mode-line
                               treemacs-nerd-icons treemacs-projectile

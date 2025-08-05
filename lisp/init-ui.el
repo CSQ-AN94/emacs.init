@@ -34,27 +34,27 @@
 ;;       (load-theme 'doom-solarized-dark)
 ;;     (load-theme 'doom-tomorrow-night)))
 
-;; (use-package doom-themes
-;;   :ensure t
-;;   :init
-;;   (if (display-graphic-p)
-;;       (load-theme 'doom-solarized-light)
-;;     (load-theme 'doom-tomorrow-night)))
-
-;; (set-face-attribute 'show-paren-match nil
-;;                     :foreground "#61AFEF"  ; 匹配时，前景色
-;;                     :background "#8BE9FD"         ; 不改背景
-;;                     :weight     'bold)      ;
-;;---
-(use-package atom-one-dark-theme
+(use-package doom-themes
   :ensure t
-  :config
-  (load-theme 'atom-one-dark t))
+  :init
+  (if (display-graphic-p)
+      (load-theme 'doom-solarized-light)
+    (load-theme 'doom-tomorrow-night)))
 
 (set-face-attribute 'show-paren-match nil
-                    :foreground  "#61AFEF" ; 匹配时，前景色
-                    :background "#3E4452"         ; 不改背景
+                    :foreground "#61AFEF"  ; 匹配时，前景色
+                    :background "#8BE9FD"         ; 不改背景
                     :weight     'bold)      ;
+;;---
+;; (use-package atom-one-dark-theme
+;;   :ensure t
+;;   :config
+;;   (load-theme 'atom-one-dark t))
+
+;; (set-face-attribute 'show-paren-match nil
+;;                     :foreground  "#61AFEF" ; 匹配时，前景色
+;;                     :background "#3E4452"         ; 不改背景
+;;                     :weight     'bold)      ;
 
 
 (set-face-attribute 'default nil :family "JetBrainsMono NF" :height 140)
