@@ -1,4 +1,4 @@
-;;; init.el -*- lexical-binding: t no-byte-compile: t -*-
+;;; init-basic.el -*- lexical-binding: t no-byte-compile: t -*-
 
 (setq wgrep-auto-save-buffer t)
 (setq make-backup-files nil)

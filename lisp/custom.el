@@ -14,24 +14,27 @@
      "0f1341c0096825b1e5d8f2ed90996025a0d013a0978677956a9e61408fcd2c77"
      default))
  '(package-selected-packages
-   '(all-the-icons-nerd-fonts atom-one-dark-theme auctex centaur-tabs
+   '(all-the-icons-nerd-fonts atom-one-dark-theme cdlatex centaur-tabs
                               clang-format company corfu dap-mode
                               doom-modeline doom-themes embark-consult
-                              evil evil-anzu evil-collection
-                              evil-matchit evil-multiedit
-                              evil-nerd-commenter evil-snipe
-                              evil-surround expand-region general
+                              evil-anzu evil-collection evil-matchit
+                              evil-multiedit evil-nerd-commenter
+                              evil-snipe evil-surround expand-region
+                              flyspell-correct general
                               github-dark-vscode-theme
-                              highlight-indent-guides iedit
-                              indent-guide keycast kind-icon
-                              lsp-bridge lsp-ui marginalia orderless
-                              org-bullets org-contrib pdf-tools
-                              pdf-view-mode quickrun
+                              highlight-indent-guides indent-guide
+                              keycast kind-icon lsp-ui marginalia
+                              orderless org-bullets org-contrib
+                              org-download org-roam-more org-roam-ui
+                              org-transclusion pdf-tools plz quickrun
                               rainbow-delimiters rainbow-identifiers
                               restart-emacs smart-mode-line
                               treemacs-nerd-icons treemacs-projectile
                               undo-tree vertico vscode-dark-plus-theme
-                              wgrep)))
+                              wgrep))
+ '(package-vc-selected-packages
+   '((org-roam-more :vc-backend Git :url
+                    "https://www.github.com/gongshangzheng/org-roam-more"))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

@@ -32,8 +32,8 @@
 
   (define-key evil-insert-state-map (kbd "C-c") #'cua-copy-region)
   (define-key evil-emacs-state-map  (kbd "C-c") #'cua-copy-region)
-  (define-key evil-insert-state-map (kbd "C-v") #'cua-paste-region)
-  (define-key evil-emacs-state-map  (kbd "C-v") #'cua-paste-region)
+  (define-key evil-insert-state-map (kbd "C-v") #'cua-paste)
+  (define-key evil-emacs-state-map  (kbd "C-v") #'cua-paste)
 
 ;; 保留你之前对 C-z 的清除
 (with-eval-after-load 'cua-base
@@ -70,10 +70,9 @@
   (define-key corfu-map (kbd "RET") nil)
   (define-key corfu-map (kbd "<return>") nil))
 
+
 (with-eval-after-load 'org
   (define-key org-mode-map (kbd "C-c C-c") 'org-toggle-checkbox))
-
-
 
 (evil-define-key 'normal dired-mode-map
     (kbd "<RET>") 'dired-find-alternate-file
