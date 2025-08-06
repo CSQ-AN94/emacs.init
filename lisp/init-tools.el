@@ -45,18 +45,25 @@
                 new-bindings :test #'equal)
     (cons new-msg new-bindings))))
 
-(use-package flyspell-correct
-    :ensure t
-    :init)
+(use-package gcmh
+  :ensure t
+  :init (gcmh-mode 1))
 
-(use-package ispell
-    :ensure nil
-    :init
-    (setq ispell-program-name "aspell")
-    (dolist (hook '(text-mode-hook))
-      (add-hook hook (lambda () (flyspell-mode 1))))
-    (setq ispell-personal-dictionary "c:/msys64/mingw64/lib/aspell-0.60/en_GB"))
-    (define-key evil-insert-state-map (kbd "C-;") 'flyspell-correct-previous)
+;; 用 gcmh，把 GC 挪到空闲时
+(use-package gcmh
+  :ensure t
+  :init
+  (setq gcmh-idle-delay 2.0                  ; 空闲≥2s再 GC
+        gcmh-high-cons-threshold (* 128 1024 1024)) ; 交互期阈值=128MB
+  (gcmh-mode 1))
+
+;; 避免“保存时刚好触发大GC”：保存前先小扫一下
+(add-hook 'before-save-hook #'garbage-collect)
+
+;; 失焦也扫一下（把停顿藏到后台）
+(add-function :after after-focus-change-function
+              (lambda () (unless (frame-focus-state) (garbage-collect))))
+
 
 (pdf-loader-install)
 

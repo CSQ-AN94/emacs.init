@@ -26,7 +26,7 @@
 
 (require 'init-org)
 (require 'init-latex)
-(add-to-list 'auto-mode-alist '("\\.tex\\'" . fundamental-mode))
+;; (add-to-list 'auto-mode-alist '("\\.tex\\'" . fundamental-mode))
 
 (require 'init-gdb)
 
