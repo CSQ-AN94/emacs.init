@@ -58,7 +58,7 @@
     (setq ispell-personal-dictionary "c:/msys64/mingw64/lib/aspell-0.60/en_GB"))
     (define-key evil-insert-state-map (kbd "C-;") 'flyspell-correct-previous)
 
-
+(pdf-loader-install)
 
 
 (provide 'init-tools)
