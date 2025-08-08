@@ -26,13 +26,13 @@
                               highlight-indent-guides indent-guide
                               keycast kind-icon lsp-ui marginalia
                               orderless org-bullets org-contrib
-                              org-download org-roam-more org-roam-ui
-                              org-transclusion pdf-tools plz quickrun
-                              rainbow-delimiters rainbow-identifiers
-                              restart-emacs smart-mode-line
-                              treemacs-nerd-icons treemacs-projectile
-                              undo-tree vertico vscode-dark-plus-theme
-                              wgrep))
+                              org-download org-fragtog org-roam-more
+                              org-roam-ui org-transclusion pdf-tools
+                              plz quickrun rainbow-delimiters
+                              rainbow-identifiers restart-emacs
+                              smart-mode-line treemacs-nerd-icons
+                              treemacs-projectile undo-tree vertico
+                              vscode-dark-plus-theme wgrep))
  '(package-vc-selected-packages
    '((org-roam-more :vc-backend Git :url
                     "https://www.github.com/gongshangzheng/org-roam-more"))))

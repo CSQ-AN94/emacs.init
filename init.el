@@ -25,8 +25,8 @@
 (require 'init-ui)
 
 (require 'init-org)
-(require 'init-latex)
-;; (add-to-list 'auto-mode-alist '("\\.tex\\'" . fundamental-mode))
+(require 'init-latexpdf)
+;;(require 'init-latex)
 
 (require 'init-gdb)
 

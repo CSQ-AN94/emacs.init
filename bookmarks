@@ -3,9 +3,9 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-capture-last-stored"
- (filename . "g:/roam-notes/20250806181905-writing_running_and_fixing_code_in_c.org")
- (front-context-string . "- tag ::[[id:1ca")
+ (filename . "g:/roam-notes/20250807153008-writing_running_and_fixing_code_in_c.org")
+ (front-context-string . "#+filetags: :C:\n")
  (rear-context-string . "ixing Code in C\n")
- (position . 116)
- (last-modified 26771 11432 387663 0))
+ (position . 114)
+ (last-modified 26772 22160 258407 0))
 )

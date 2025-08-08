@@ -65,7 +65,6 @@
               (lambda () (unless (frame-focus-state) (garbage-collect))))
 
 
-(pdf-loader-install)
 
 
 (provide 'init-tools)

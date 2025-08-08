@@ -158,8 +158,16 @@ Create prefix map: +general-global-NAME. Prefix bindings in BODY with INFIX-KEY.
 (with-eval-after-load 'evil
   (dolist (map '(evil-normal-state-map evil-insert-state-map evil-visual-state-map
                                        evil-emacs-state-map evil-replace-state-map evil-operator-state-map))
-    (define-key (symbol-value map) (kbd "C-, m") #'evil-motion-state))
-  (define-key evil-motion-state-map (kbd "C-, m") #'evil-normal-state))
+(define-key (symbol-value map) (kbd "C-, m") #'evil-motion-state))
+(define-key evil-motion-state-map (kbd "C-, m") #'evil-normal-state))
+
+(with-eval-after-load 'evil
+  ;; 解绑 Evil 各种状态下的 C-u
+  (define-key evil-normal-state-map  (kbd "C-u") nil)
+  (define-key evil-visual-state-map  (kbd "C-u") nil)
+  (define-key evil-motion-state-map  (kbd "C-u") nil)
+  ;; （如果你还想在 Emacs 原生状态里也能用 C-u，就绑定 universal-argument）
+  (define-key evil-emacs-state-map   (kbd "C-u") 'universal-argument))
 
 
 (provide 'init-keybindings)
