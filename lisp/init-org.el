@@ -94,8 +94,19 @@
   :config
   (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:20}" 'face 'org-tag)))
   (require 'org-roam-dailies)            ;; 启用日记功能
-  (org-roam-db-autosync-mode))           ;; 启动时自动同步数据库
+  (org-roam-db-autosync-mode)           ;; 启动时自动同步数据库
+  (with-eval-after-load 'evil
+    (dolist (kv '(("C-c n f" . org-roam-node-find)
+                  ("C-c n i" . org-roam-node-insert)
+                  ("C-c n c" . org-roam-capture)
+                  ("C-c n l" . org-roam-buffer-toggle)
+                  ("C-c n u" . org-roam-ui-mode)))
+      (evil-define-key '(normal insert emacs)  ;; 三种 state
+        global-map
+        (kbd (car kv))
+        (cdr kv)))))
 
+  
 (use-package org-roam-ui
   :ensure t              ;; 自动安装
   :after org-roam

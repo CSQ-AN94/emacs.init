@@ -55,7 +55,7 @@
 
 ;; 主题
 
-;;;doom-nord-light
+;; doom-nord-light
 ;; (use-package doom-themes
 ;;   :ensure t
 ;;   :init
@@ -70,14 +70,14 @@
 ;;   :config
 ;;   (load-theme 'doom-moonlight))
 
-;;;doom-tokyo-night
+;;;;doom-tokyo-night
 ;; (use-package doom-themes
 ;;   :ensure t
 ;;   :init
 ;;   :config
 ;;   (load-theme 'doom-tokyo-night))
 
-;;;doom-solarized-light
+;; doom-solarized-light
 (use-package doom-themes
   :ensure t
   :init
