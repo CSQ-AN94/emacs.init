@@ -153,5 +153,72 @@ Supports exporting consult-grep to wgrep, file to wdired, and consult-location t
                (not (buffer-modified-p b)))          ; 不杀已修改的
       (kill-buffer b))))
 
+;;;------create a new org-roam file-------------
+(require 'org)
+(require 'org-id)            ;; 生成 ID
+(require 'org-roam nil t)    ;; 有就用；没有也不报错
+
+;; 你原来的综合搜索（含 tag）照旧
+(global-set-key (kbd "C-c n f") #'org-roam-node-find)
+
+;; 是否给文件名前缀时间戳（形如 20250810152300-xxx.org）
+(defvar csq/org-roam-filename-use-ts-prefix t)
+
+;; slug：优先用 org-roam 的实现，缺失就用简化版
+(defun csq/slugify (s)
+  (let* ((lower (downcase s))
+         (spaces (replace-regexp-in-string "[[:space:]]+" "-" lower))
+         (clean  (replace-regexp-in-string "[^a-z0-9-]" "" spaces)))
+    (replace-regexp-in-string "-+" "-" clean)))
+
+(defun csq/org-roam--title-to-slug (title)
+  (cond
+   ((fboundp 'org-roam-title-to-slug) (org-roam-title-to-slug title))
+   ((fboundp 'org-roam--title-to-slug) (org-roam--title-to-slug title))
+   (t (csq/slugify title))))
+
+;; 在 org-roam-directory 下生成唯一路径
+(defun csq/org-roam--unique-path (basename)
+  (let* ((dir (file-name-as-directory
+               (or (and (boundp 'org-roam-directory) org-roam-directory)
+                   default-directory)))
+         (i 1)
+         (path (expand-file-name (concat basename ".org") dir)))
+    (while (file-exists-p path)
+      (setq path (expand-file-name (format "%s-%d.org" basename i) dir))
+      (setq i (1+ i)))
+    path))
+
+(defun csq/org-roam-new-file (title)
+  "总是按 TITLE 新建一个 org-roam 文件并打开：
+- 文件名：时间戳-标题slug.org（可关闭时间戳）
+- 文件头：:ID:、#+title、#+filetags
+- 同名自动避让，不会跳到旧文件。"
+  (interactive "sNew note title: ")
+  (let* ((slug (csq/org-roam--title-to-slug title))
+         (ts   (format-time-string "%Y%m%d%H%M%S"))
+         (base (if csq/org-roam-filename-use-ts-prefix
+                   (format "%s-%s" ts slug)
+                 slug))
+         (path (csq/org-roam--unique-path base)))
+    (make-directory (file-name-directory path) t)
+    (find-file path)
+    (when (= (point-max) 1)                 ;; 只在新文件写入头部
+      (let ((id (org-id-new)))
+        (insert (format
+                 ":PROPERTIES:\n:ID: %s\n:END:\n#+title: %s\n#+filetags:\n\n"
+                 id title))
+        (save-buffer)))
+    ;; 同步进 org-roam 数据库（若可用）
+    (when (featurep 'org-roam)
+      (ignore-errors
+        (if (fboundp 'org-roam-db-sync)
+            (org-roam-db-sync)
+          (when (fboundp 'org-roam-db-update-file)
+            (org-roam-db-update-file)))))
+    (message "Created: %s" path)))
+
+(global-set-key (kbd "C-c n N") #'csq/org-roam-new-file)
+
 
 (provide 'init-func)
