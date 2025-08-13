@@ -1,7 +1,7 @@
 history
 places
 recentf
-
+bookmarks
 # 忽略 Emacs auto-save-list 目录
 auto-save-list/
 # 如果是 saves- 开头的临时文件夹
