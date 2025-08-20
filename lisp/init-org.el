@@ -201,6 +201,30 @@
   ;; （可选）如果你想在自定义后端列表里也能看到 md
   (add-to-list 'org-export-backends 'md))
 
+
+(require 'ob)
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((C . t)))  ;; 注意 C 要大写
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((java . t))) ;; 开启 Java
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((C . t)      ;; 注意这里是大写 C
+   (java . t)
+   (python . t)
+   (shell . t)))
+
+(use-package ox-hugo
+  :ensure t   ;Auto-install the package from Melpa
+  :pin melpa  ;`package-archives' should already have ("melpa" . "https://melpa.org/packages/")
+  :after ox)
+
+
 ;; (use-package org-roam
 ;;   :ensure t
 ;;   :init
