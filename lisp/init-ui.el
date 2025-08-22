@@ -63,12 +63,12 @@
 ;;       (load-theme 'doom-nord-light)
 ;;     (load-theme 'doom-tomorrow-night)))
 
-;;;doom-moonlight
-;; (use-package doom-themes
-;;   :ensure t
-;;   :init
-;;   :config
-;;   (load-theme 'doom-moonlight))
+;; doom-moonlight
+(use-package doom-themes
+  :ensure t
+  :init
+  :config
+  (load-theme 'doom-moonlight))
 
 ;;;;doom-tokyo-night
 ;; (use-package doom-themes
@@ -77,18 +77,18 @@
 ;;   :config
 ;;   (load-theme 'doom-tokyo-night))
 
-;; doom-solarized-light
-(use-package doom-themes
-  :ensure t
-  :init
-  (if (display-graphic-p)
-      (load-theme 'doom-solarized-light)
-    (load-theme 'doom-tomorrow-night)))
+;; ;; doom-solarized-light
+;; (use-package doom-themes
+;;   :ensure t
+;;   :init
+;;   (if (display-graphic-p)
+;;       (load-theme 'doom-solarized-light)
+;;     (load-theme 'doom-tomorrow-night)))
 
-(set-face-attribute 'show-paren-match nil
-                    :foreground "#61AFEF"  ; 匹配时，前景色
-                    :background "#8BE9FD"         ; 不改背景
-                    :weight     'bold)      ;
+;; (set-face-attribute 'show-paren-match nil
+;;                     :foreground "#61AFEF"  ; 匹配时，前景色
+;;                     :background "#8BE9FD"         ; 不改背景
+;;                     :weight     'bold)      ;
 
 ;;;atom-one-dark
 ;; (use-package atom-one-dark-theme
@@ -147,7 +147,7 @@
         centaur-tabs-plain-icons t
       ;;centaur-tabs-set-bar 'under
       ;;x-underline-at-descent-line t
-      ;;centaur-tabs-set-bar 'over
+        centaur-tabs-set-bar 'over
         centaur-tabs-set-modified-marker t
         centaur-tabs-modified-marker "•"
         centaur-tabs-enable-buffer-reordering t)
