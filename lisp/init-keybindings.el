@@ -56,6 +56,20 @@
 ;; (define-key company-active-map (kbd "C-n") 'company-select-next)
 ;; (define-key company-active-map (kbd "C-p") 'company-select-previous)
 
+(with-eval-after-load 'evil
+  (defun csq/evil-visual-backspace ()
+    "在 Visual state：若有选区则直接删除选区（不入寄存器），
+若无选区则后退删一个字符。"
+    (interactive)
+    (if (use-region-p)
+        (progn
+          (delete-region (region-beginning) (region-end)) ; 不 yank
+          (evil-normal-state))                            ; 回到 normal（符合直觉）
+      (backward-delete-char-untabify 1)))
+
+  (define-key evil-visual-state-map (kbd "DEL")         #'csq/evil-visual-backspace)
+  (define-key evil-visual-state-map (kbd "<backspace>") #'csq/evil-visual-backspace))
+
 (global-set-key (kbd "C-x b") 'consult-buffer)
 
 ;; 这个快捷键绑定可以用之后的插件 counsel 代替
