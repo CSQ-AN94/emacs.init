@@ -183,5 +183,13 @@ Create prefix map: +general-global-NAME. Prefix bindings in BODY with INFIX-KEY.
   ;; （如果你还想在 Emacs 原生状态里也能用 C-u，就绑定 universal-argument）
   (define-key evil-emacs-state-map   (kbd "C-u") 'universal-argument))
 
+;; 切换显示强调标记 (* / = ~ + _)
+(defun toggle-org-emphasis ()
+  (interactive)
+  (setq org-hide-emphasis-markers (not org-hide-emphasis-markers))
+  (font-lock-flush))
+
+(define-key org-mode-map (kbd "C-c e") #'toggle-org-emphasis)
+
 
 (provide 'init-keybindings)
