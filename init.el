@@ -18,6 +18,7 @@
 
 (require 'init-tools)
 
+(require 'init-programming)
 
 (require 'init-keybindings)
 
@@ -28,7 +29,7 @@
 (require 'init-latexpdf)
 ;;(require 'init-latex)
 
-(require 'init-gdb)
+;;(require 'init-gdb)
 
 (require 'init-style)
 (require 'custom)

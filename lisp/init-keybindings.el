@@ -46,7 +46,6 @@
 (global-set-key (kbd "C-h C-v") 'find-variable)
 (global-set-key (kbd "C-h C-k") 'find-function-on-key)
 
-(global-set-key (kbd "<f5>") 'quickrun)
 
 (global-set-key (kbd "C-;") 'embark-act)
 
@@ -152,6 +151,9 @@ Create prefix map: +general-global-NAME. Prefix bindings in BODY with INFIX-KEY.
     "hdf" 'describe-function
     "hdv" 'describe-variable
     "hdk" 'describe-key
+    "hc" 'zilongshanren/clearn-highlight
+    "hH" 'zilongshanren/highlight-dwim
+    "v" 'er/expand-region
     )
 
   (+general-global-menu! "buffer" "b"
@@ -168,6 +170,17 @@ Create prefix map: +general-global-NAME. Prefix bindings in BODY with INFIX-KEY.
     "k" 'kill-buffer
     "y" 'copy-buffer-name
     "K" 'kill-other-buffers))
+
+;;;###autoload
+(defun my/search-project-for-symbol-at-point ()
+  (interactive)
+  (if (use-region-p)
+      (progn
+        (consult-ripgrep (project-root (project-current))
+                         (buffer-substring (region-beginning) (region-end))))))
+
+
+
 
 (with-eval-after-load 'evil
   (dolist (map '(evil-normal-state-map evil-insert-state-map evil-visual-state-map

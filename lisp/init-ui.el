@@ -130,7 +130,26 @@
 (setq display-line-numbers-type 'relative)
 
 ;; 当前行高亮
+;; 默认全局开启 hl-line
 (global-hl-line-mode 1)
+
+(defun my/hl-line-toggle-based-on-selection ()
+  "在有选区或 Evil 可视模式时自动关闭 hl-line，避免和 region 重叠。"
+  (let ((on (not (or (bound-and-true-p mark-active)
+                     (and (boundp 'evil-state) (eq evil-state 'visual))))))
+    (dolist (win (window-list))
+      (with-selected-window win
+        (hl-line-mode (if on 1 -1))))))
+
+;; 普通选区
+(add-hook 'activate-mark-hook #'my/hl-line-toggle-based-on-selection)
+(add-hook 'deactivate-mark-hook #'my/hl-line-toggle-based-on-selection)
+
+;; Evil 可视模式
+(with-eval-after-load 'evil
+  (add-hook 'evil-visual-state-entry-hook #'my/hl-line-toggle-based-on-selection)
+  (add-hook 'evil-visual-state-exit-hook  #'my/hl-line-toggle-based-on-selection))
+
 
 ;;tabs
 (use-package centaur-tabs

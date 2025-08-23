@@ -64,3 +64,5 @@ org-*/
 \#*\#
 EOF
 projects
+
+lisp/.#init-programming.el

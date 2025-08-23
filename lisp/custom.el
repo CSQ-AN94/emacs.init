@@ -23,15 +23,17 @@
                               evil-surround expand-region
                               flyspell-correct gcmh general
                               github-dark-vscode-theme
-                              highlight-indent-guides indent-guide
-                              keycast kind-icon lsp-ui marginalia
-                              orderless org-bullets org-contrib
-                              org-download org-fragtog org-roam-more
-                              org-roam-ui org-transclusion ox-hugo
-                              pdf-tools plz quickrun
+                              highlight-global highlight-indent-guides
+                              indent-guide keycast kind-icon lsp-ui
+                              marginalia orderless org-bullets
+                              org-contrib org-download org-fragtog
+                              org-roam-more org-roam-ui
+                              org-transclusion ox-hugo pdf-tools plz
+                              quelpa quelpa-use-package quickrun
                               rainbow-delimiters rainbow-identifiers
                               restart-emacs smart-mode-line
-                              treemacs-nerd-icons treemacs-projectile
+                              symbol-overlay treemacs-nerd-icons
+                              treemacs-projectile treesit-auto
                               undo-tree vertico vscode-dark-plus-theme
                               wgrep))
  '(package-vc-selected-packages
