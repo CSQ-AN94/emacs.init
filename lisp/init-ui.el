@@ -130,25 +130,31 @@
 (setq display-line-numbers-type 'relative)
 
 ;; 当前行高亮
-;; 默认全局开启 hl-line
-(global-hl-line-mode 1)
+;; 综合检测区域状态
+(defun region-or-visual-active-p ()
+  "检查是否有选区或处于 visual state。"
+  (or (use-region-p)
+      (and (boundp 'evil-mode) (evil-visual-state-p))))
 
-(defun my/hl-line-toggle-based-on-selection ()
-  "在有选区或 Evil 可视模式时自动关闭 hl-line，避免和 region 重叠。"
-  (let ((on (not (or (bound-and-true-p mark-active)
-                     (and (boundp 'evil-state) (eq evil-state 'visual))))))
-    (dolist (win (window-list))
-      (with-selected-window win
-        (hl-line-mode (if on 1 -1))))))
+;; 动态调整 hl-line
+(defun adjust-hl-line-based-on-region ()
+  "根据选区状态调整 hl-line-mode。"
+  (if (region-or-visual-active-p)
+      (hl-line-mode -1)
+    (hl-line-mode 1)))
 
-;; 普通选区
-(add-hook 'activate-mark-hook #'my/hl-line-toggle-based-on-selection)
-(add-hook 'deactivate-mark-hook #'my/hl-line-toggle-based-on-selection)
+;; 添加钩子
+(dolist (hook '(activate-mark-hook deactivate-mark-hook))
+  (add-hook hook #'adjust-hl-line-based-on-region))
 
-;; Evil 可视模式
-(with-eval-after-load 'evil
-  (add-hook 'evil-visual-state-entry-hook #'my/hl-line-toggle-based-on-selection)
-  (add-hook 'evil-visual-state-exit-hook  #'my/hl-line-toggle-based-on-selection))
+;; 对于 evil-mode
+(when (boundp 'evil-mode)
+  (dolist (state '(visual-state-entry-hook visual-state-exit-hook))
+    (add-hook (intern (format "evil-%s" state)) 
+              #'adjust-hl-line-based-on-region)))
+
+;; 初始状态设置
+(add-hook 'after-init-hook #'adjust-hl-line-based-on-region)
 
 
 ;;tabs
